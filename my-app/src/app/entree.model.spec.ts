@@ -16,14 +16,6 @@ describe('Entree: equals', function () {
   })); 
 });
 
-describe('Entree: toString', function () {
-  const testCases = [
-    { foodList: new SortedListOfImmutables(null), expected: '< >' },
-    { foodList: new SortedListOfImmutables(null), expected: '< Bacon, Waffle >' },  // Supón que la lista tiene estos elementos
-    { foodList: new SortedListOfImmutables(null), expected: '< Pancakes, Coffee >' }
-  ];
-});
-
 describe('Entree: toString', function () { 
   const testCases = [
     { foodList: ['Bacon', 'Waffle'], expected: '< Bacon, Waffle >' }, 
