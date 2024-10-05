@@ -24,7 +24,7 @@ describe('Entree: toString', function () {
   ];
 });
 
-describe('Entree: toString', function () {
+describe('Entree: toString', function () { 
   const testCases = [
     { foodList: ['Bacon', 'Waffle'], expected: '< Bacon, Waffle >' }, 
     { foodList: ['Pancakes', 'Coffee'], expected: '< Pancakes, Coffee >' },
@@ -32,17 +32,16 @@ describe('Entree: toString', function () {
   ];
 
   testCases.forEach(testCase => {
-    it(`Debe retornar la representación correcta de la lista de alimentos para ${testCase.expected}`, inject([Entree], (entree: Entree) => {
+    it(`Debe retornar la representación correcta de la lista de alimentos para ${testCase.expected}`, inject([Entree], (service: Entree) => { 
       const mockFoodList = jasmine.createSpyObj('SortedListOfImmutables', ['get', 'getSize']);
 
-      // Devolvemos objetos Food (u otra clase que implemente Listable) en lugar de strings
       mockFoodList.get.and.callFake((index: number) => {
-        return { toString: () => testCase.foodList[index] };  // Aseguramos que devuelva un Listable con un método toString()
+        return { toString: () => testCase.foodList[index] };  
       });
       mockFoodList.getSize.and.returnValue(testCase.foodList.length);
 
-      entree = new Entree('TestEntree', mockFoodList);
-      expect(entree.toString()).toBe(testCase.expected);
-    }));
+      const entree = new Entree('TestEntree', mockFoodList);
+      expect(entree.toString()).toBe(testCase.expected); 
+    })); 
   });
 });
